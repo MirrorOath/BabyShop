@@ -78,7 +78,7 @@
 						<div class="imgdiv">
 							<div>
 								<a
-									href="${pageContext.request.contextPath }/search/bookInfo.action?bookId=${cmty.id } "
+									href="${pageContext.request.contextPath }/cmty/cmtyInfo.action?cmtyId=${cmty.id } "
 									target=_blank> <img alt="Error" src="../${cmty.imageSrc }"></a>
 							</div>
 							<div>

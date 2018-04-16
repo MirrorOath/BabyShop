@@ -37,31 +37,43 @@ public class CommodityDao {
         List<CommodityInfo> commdities = (List<CommodityInfo>) query.list();
         cmtyPage.setPageData(commdities);
     }
-    
+
     // 添加一个新商品
     public boolean addCommodity(CommodityInfo cmty) {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
-        
+
         session.save(cmty);
-        
+
         tx.commit();
         session.close();
         return true;
     }
-    
+
     // 根据商品名寻找一个商品
     public CommodityInfo getByName(String name) {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
-        
+
         Query query = session.createQuery("from CommodityInfo where name = ?");
         query.setString(0, name);
         CommodityInfo cmty = (CommodityInfo) query.uniqueResult();
-        
+
         tx.commit();
         session.close();
         return cmty;
     }
-    
+
+    // 根据商品id寻找一个商品
+    public CommodityInfo getById(Integer id) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+
+        CommodityInfo cmty = (CommodityInfo) session.get(CommodityInfo.class, id);
+
+        tx.commit();
+        session.close();
+        return cmty;
+    }
+
 }

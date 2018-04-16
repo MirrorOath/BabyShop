@@ -58,4 +58,11 @@ public class CommodityCtl {
         return changePage(model, session, 1);
     }
 
+    @RequestMapping(value = "cmtyInfo")
+    public String cmtyInfo(Model model, HttpSession session, Integer cmtyId) {
+        CommodityInfo cmty = cmtyDao.getById(cmtyId);
+        model.addAttribute("cmty", cmty);
+        return "../user/commodityInfo.jsp";
+    }
+
 }

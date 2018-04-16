@@ -77,7 +77,7 @@
 						<div class="row clearfix">
 							<div class="col-md-8 column">
 								<a type="button" class="btn btn-default btn-block btn-warning"
-									href="${pageContext.request.contextPath}/cart/addBook.action?userId=${userInfo.id }&bookId=${book.bookId }">加入购物车</a>
+									href="${pageContext.request.contextPath}/cart/addcmty.action?userId=${userInfo.id }&cmtyId=${book.cmtyId }">加入购物车</a>
 								<a type="button" class="btn btn-default btn-success btn-block"
 									href="${pageContext.request.contextPath}/cart/seeCart.action?userId=${userInfo.id }"
 									target=_blank>查看购物车</a>
@@ -89,18 +89,18 @@
 				<table class="table table-condensed table-hover table-bordered">
 					<thead>
 						<tr>
-							<th>图书预览</th>
-							<th>书名</th>
-							<th>出版社</th>
-							<th>作者</th>
+							<th>商品预览</th>
+							<th>商品名</th>
+							<th>类别</th>
+							<th>价格</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><img alt="Error" src="../${book.imageSrc }"></td>
-							<td>${book.bookName }</td>
-							<td>${book.press }</td>
-							<td>${book.author }</td>
+							<td><img alt="Error" src="../${cmty.imageSrc }"></td>
+							<td>${cmty.name }</td>
+							<td>${cmty.category }</td>
+							<td>${cmty.price }</td>
 						</tr>
 					</tbody>
 				</table>
