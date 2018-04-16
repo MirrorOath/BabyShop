@@ -1,7 +1,6 @@
 package controller;
 
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transaction;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
