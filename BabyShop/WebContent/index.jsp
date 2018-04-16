@@ -12,10 +12,10 @@
 <title>Welcome</title>
 </head>
 <body>
-    <script src="${pageContext.request.contextPath }/easyUI/jquery.min.js"></script>
-    <script
-        src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
-	
+	<script src="${pageContext.request.contextPath }/easyUI/jquery.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
+
 	<jsp:include page="user/util.jsp" />
 	<div class="container">
 		<div class="row clearfix">
@@ -54,11 +54,11 @@
 							</ul></li>
 					</ul>
 					<form class="navbar-form navbar-left" role="search"
-						action="${pageContext.request.contextPath}/search/byName.action"
+						action="${pageContext.request.contextPath}/cmty/searchByName.action"
 						method="post">
 						<div class="form-group">
 							<input class="form-control" type="text" maxlenght=100
-								name="bookName" />
+								name="commodityName" />
 						</div>
 						<button type="submit" class="btn btn-default">搜索</button>
 					</form>
