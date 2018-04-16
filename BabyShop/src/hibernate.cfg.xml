@@ -4,8 +4,8 @@ PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sour
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://47.74.146.159:3306/ForExWork</property>
-		<property name="hibernate.connection.username">exwork</property>
+		<property name="hibernate.connection.url">jdbc:mysql://47.74.146.159:3306/BabyShop</property>
+		<property name="hibernate.connection.username">BabyShop</property>
 		<property name="hibernate.connection.password">123$%^qweRTY</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.show_sql">true</property>
@@ -25,8 +25,10 @@ PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sour
 		<property name="hibernate.cache.use_query_cache">true</property>
 		<property name="connection.useUnicode">true</property>
         <property name="connection.characterEncoding">UTF-8</property>
-        <mapping resource="dao/UserInfo.hbm.xml"/>
-        <mapping resource="dao/BillingStrategy.hbm.xml"/>
-        <mapping resource="dao/UseResources.hbm.xml"/>
+        <mapping resource="dao/tables/UserInfo.hbm.xml"/>
+        <mapping resource="dao/tables/CommodityInfo.hbm.xml"/>
+        <mapping resource="dao/tables/CartInfo.hbm.xml"/>
+        <mapping resource="dao/tables/OrderDetail.hbm.xml"/>
+        <mapping resource="dao/tables/OrderForm.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
