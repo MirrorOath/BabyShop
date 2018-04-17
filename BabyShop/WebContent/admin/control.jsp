@@ -13,6 +13,7 @@
 				<li class="selected"></li>
 				<li><a href="${pageContext.request.contextPath }/user/rg_lg_do.action?rorl=index">首页</a></li>
 				<li><a href="${pageContext.request.contextPath }/admin/queryUsers.action">管理用户</a></li>
+                <li><a href="${pageContext.request.contextPath }/admin/queryCmties.action">管理商品</a></li>
 				<li></li>
 				</ul>
 	</div>

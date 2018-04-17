@@ -75,5 +75,18 @@ public class CommodityDao {
         session.close();
         return cmty;
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<CommodityInfo> getAllCmties(){
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+        
+        Query query = session.createQuery("from CommodityInfo");
+        List<CommodityInfo> cmties = (List<CommodityInfo>) query.list();
+        
+        tx.commit();
+        session.close();
+        return cmties;
+    }
 
 }

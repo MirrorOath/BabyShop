@@ -47,7 +47,10 @@ public class UserCtl {
             session.setAttribute("unameNext", "退出登录");
             
 //            new CartCtl().loginCart(, oldUserInfo.getId());
-            return session.getAttribute("lastUrl").toString();
+//            return session.getAttribute("lastUrl").toString();
+            if("admin".equals(oldUserInfo.getUserName()))
+                return "redirect:../admin/control.jsp";
+            return "redirect:../index.jsp";
         }
         session.setAttribute("msg", "密码错误");
         return "redirect:../user/login.jsp";

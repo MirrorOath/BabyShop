@@ -54,6 +54,13 @@ public class AdminCtl {
         return "../admin/userInfo.jsp";
     }
     
+    @RequestMapping(value = "queryCmties")
+    public String queryCmties(Model model, HttpSession session) {
+        List<CommodityInfo> cmties = cmtyDao.getAllCmties();
+        model.addAttribute("cmties", cmties);
+        return "../admin/cmties.jsp";
+    }
+    
     @RequestMapping(value = "delUser")
     public String delUser(Model model, HttpSession session, Integer userId) {
         userDao.delUser(userId);
