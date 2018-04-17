@@ -100,10 +100,10 @@
 								<div class="panel-body">
 									总价:${order.totalPrice }<br />
 									<c:forEach var="detail" items="${details }" varStatus="ss">
-										<c:if test="${detail.formInfo.id == order.id}">
+										<c:if test="${detail.formId == order.id}">
 										详单号:${detail.id }
-										书名:${detail.bookInfo.bookName }出版社:${detail.bookInfo.press }作者:${detail.bookInfo.author }
-										数量:${detail.bookCount }
+										商品名:${detail.cmty.name }类别:${detail.cmty.category }价格:${detail.cmty.price }
+										数量:${detail.count }
 										<br />
 										</c:if>
 									</c:forEach>

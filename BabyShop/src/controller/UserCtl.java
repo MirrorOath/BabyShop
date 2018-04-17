@@ -64,7 +64,7 @@ public class UserCtl {
                 UserInfo userInfo = userDao.getById(userId);
                 List<OrderForm> forms = orderDao.getFormByUserId(userInfo.getId());
                 model.addAttribute("orders", forms);
-                List<OrderDetail> details = orderDao.getAllDetailsByUserId(userInfo.getId());
+                List<OrderDetail> details = orderDao.getAllDetails(userInfo.getId());
                 model.addAttribute("details", details);
                 return "userarea.jsp";
             }

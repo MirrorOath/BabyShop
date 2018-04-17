@@ -7,7 +7,7 @@ public class OrderForm {
     private Integer userId;
     private String address;
     private String exInfo;
-    private Integer totalPrice;
+    private Double totalPrice;
     private Date date;
 
     public Integer getId() {
@@ -42,11 +42,11 @@ public class OrderForm {
         this.exInfo = exInfo;
     }
 
-    public Integer getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Integer totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 

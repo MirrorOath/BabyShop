@@ -88,19 +88,19 @@
 			<tr>
 				<th>详单单号</th>
 				<th>图书预览</th>
-				<th>书名</th>
-				<th>出版社</th>
-				<th>作者</th>
+				<th>商品名</th>
+				<th>类别</th>
+				<th>价格</th>
 				<th>数量</th>
 			</tr>
 			<c:forEach var="detail" items="${details }" varStatus="sta">
 				<tr>
 					<td>${detail.id }</td>
-					<td><img alt="Error" src="../${detail.bookInfo.imageSrc }"></td>
-					<td>${detail.bookInfo.bookName }</td>
-					<td>${detail.bookInfo.press }</td>
-					<td>${detail.bookInfo.author }</td>
-					<td>${detail.bookCount }</td>
+					<td><img alt="Error" src="../${detail.cmty.imageSrc }"></td>
+					<td>${detail.cmty.name }</td>
+					<td>${detail.cmty.category }</td>
+					<td>${detail.cmty.price }</td>
+					<td>${detail.count }</td>
 				</tr>
 			</c:forEach>
 		</table>

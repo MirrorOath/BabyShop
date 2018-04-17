@@ -16,12 +16,21 @@ import dao.util.UtilFactory;
 public class UserInfoDao {
 
     // 返回所有哟用户
+    @SuppressWarnings("unchecked")
     public List<UserInfo> getAllUsers() {
-        return null;
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+        
+        Query query = session.createQuery("from UserInfo");
+        List<UserInfo> users = (List<UserInfo>) query.list();
+
+        tx.commit();
+        session.close();
+        return users;
     }
 
     // 注册一个用户
-    public boolean register(UserInfo userInfo) {
+    public void register(UserInfo userInfo) {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
 
@@ -30,12 +39,17 @@ public class UserInfoDao {
 
         tx.commit();
         session.close();
-        return true;
     }
 
     // 删除一个用户
-    public boolean delUser(Integer userId) {
-        return false;
+    public void delUser(Integer userId) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+        
+        session.delete(getById(userId));
+
+        tx.commit();
+        session.close();
     }
 
     // 基于id更新一个用户信息

@@ -103,7 +103,7 @@
 								<tr>
 
 									<td id="cbo"><div id="cb">
-											<input type="checkbox" name="cartBook"
+											<input type="checkbox" name="cartCmtyId"
 												value="${cart.cmty.id }" />
 										</div></td>
 									<td><div>

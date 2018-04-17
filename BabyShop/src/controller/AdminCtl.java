@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import dao.CommodityDao;
 import dao.OrderDao;
 import dao.UserInfoDao;
 import dao.tables.CommodityInfo;
+import dao.tables.UserInfo;
 
 @Controller
 @RequestMapping(value = "/admin/")
@@ -41,6 +44,20 @@ public class AdminCtl {
             model.addAttribute("msg", "书已存在");
             return "control.jsp";
         }
+    }
+    
+
+    @RequestMapping(value = "queryUsers")
+    public String queryUsers(Model model, HttpSession session) {
+        List<UserInfo> users = userDao.getAllUsers();
+        model.addAttribute("users", users);
+        return "../admin/userInfo.jsp";
+    }
+    
+    @RequestMapping(value = "delUser")
+    public String delUser(Model model, HttpSession session, Integer userId) {
+        userDao.delUser(userId);
+        return queryUsers(model, session);
     }
 
 }

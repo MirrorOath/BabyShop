@@ -25,7 +25,7 @@
 			</tr>
 			<c:forEach var="user" items="${users }" varStatus="sta">
 				<tr>
-					<td>${user.id }</td><td>${user.username }</td><td>${user.pwd }</td><td>${user.age }</td><td>${user.date }</td>
+					<td>${user.id }</td><td>${user.userName }</td><td>${user.password }</td><td>${user.age }</td><td>${user.date }</td>
 					<td><a href="${pageContext.request.contextPath }/admin/delUser.action?userId=${user.id }" >删除</a></td>
 				</tr>
 			</c:forEach>

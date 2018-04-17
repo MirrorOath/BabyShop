@@ -7,6 +7,7 @@ public class OrderDetail {
     private Integer commodityId;
     private Integer price;
     private Integer count;
+    private CommodityInfo cmty;
 
     public Integer getId() {
         return id;
@@ -46,6 +47,14 @@ public class OrderDetail {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    public CommodityInfo getCmty() {
+        return cmty;
+    }
+
+    public void setCmty(CommodityInfo cmty) {
+        this.cmty = cmty;
     }
 
     @Override
