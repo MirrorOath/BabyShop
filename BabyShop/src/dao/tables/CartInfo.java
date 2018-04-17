@@ -8,6 +8,7 @@ public class CartInfo {
     private Integer commodityId;
     private Integer count;
     private Date date;
+    private CommodityInfo cmty;
 
     public Integer getId() {
         return id;
@@ -47,6 +48,14 @@ public class CartInfo {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public CommodityInfo getCmty() {
+        return cmty;
+    }
+
+    public void setCmty(CommodityInfo cmty) {
+        this.cmty = cmty;
     }
 
     @Override

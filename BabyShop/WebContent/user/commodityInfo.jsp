@@ -77,7 +77,7 @@
 						<div class="row clearfix">
 							<div class="col-md-8 column">
 								<a type="button" class="btn btn-default btn-block btn-warning"
-									href="${pageContext.request.contextPath}/cart/addcmty.action?userId=${userInfo.id }&cmtyId=${book.cmtyId }">加入购物车</a>
+									href="${pageContext.request.contextPath}/cart/addcmty.action?userId=${userInfo.id }&cmtyId=${cmty.id }">加入购物车</a>
 								<a type="button" class="btn btn-default btn-success btn-block"
 									href="${pageContext.request.contextPath}/cart/seeCart.action?userId=${userInfo.id }"
 									target=_blank>查看购物车</a>

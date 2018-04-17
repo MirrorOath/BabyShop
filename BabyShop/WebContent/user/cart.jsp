@@ -85,10 +85,10 @@
 						<thead>
 							<tr>
 								<th></th>
-								<th>图书预览</th>
-								<th>书名</th>
-								<th>出版社</th>
-								<th>作者</th>
+								<th>商品预览</th>
+								<th>商品名书名</th>
+								<th>类别</th>
+								<th>价格</th>
 								<th>数量</th>
 							</tr>
 						</thead>
@@ -98,17 +98,17 @@
 
 									<td id="cbo"><div id="cb">
 											<input type="checkbox" name="cartBook"
-												value="${cart.bookInfo.bookId }" />
+												value="${cart.cmty.id }" />
 										</div></td>
 									<td><div>
-											<img alt="Error" src="../${cart.bookInfo.imageSrc }">
+											<img alt="Error" src="../${cart.cmty.imageSrc }">
 										</div></td>
-									<td>${cart.bookInfo.bookName }</td>
-									<td>${cart.bookInfo.press }</td>
-									<td>${cart.bookInfo.author }</td>
-									<td>${cart.bookCount }</td>
+									<td>${cart.cmty.name }</td>
+									<td>${cart.cmty.category }</td>
+									<td>${cart.cmty.price }</td>
+									<td>${cart.count }</td>
 									<td><a
-										href="${pageContext.request.contextPath}/cart/delectCart.action?bookId=${cart.bookInfo.bookId }">删除</a></td>
+										href="${pageContext.request.contextPath}/cart/delCart.action?cmtyId=${cart.cmty.id }">删除</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
