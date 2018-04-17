@@ -113,4 +113,18 @@ public class OrderDao {
         return form;
     }
 
+    // 删除一个订单以及下级详单
+    public void delOrderFormAndDetails(Integer formId) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+
+        session.delete(getOrderFormByFormId(formId));
+        List<OrderDetail> Details = getDetailsByFormId(formId);
+        for (OrderDetail Detail : Details)
+            session.delete(Detail);
+
+        tx.commit();
+        session.close();
+    }
+
 }

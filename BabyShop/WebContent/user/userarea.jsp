@@ -14,7 +14,7 @@
 <body>
 	<script src="${pageContext.request.contextPath }/easyUI/jquery.min.js"></script>
 	<script
-		src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
+		src="${pageContext.request.contextPath }/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 	<jsp:include page="util.jsp" />
 	<div class="container">

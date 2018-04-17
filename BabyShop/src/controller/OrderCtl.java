@@ -51,5 +51,17 @@ public class OrderCtl {
         model.addAttribute("form", orderDao.getOrderFormByFormId(formId));
         return "../user/oFormInfo.jsp";
     }
+    
+    @RequestMapping(value = "delForm")
+    public String delForm(Model model, HttpSession session, Integer formId) {
+        orderDao.delOrderFormAndDetails(formId);
+        Integer userId = ((UserInfo) session.getAttribute("userInfo")).getId();
+        UserInfo userInfo = userDao.getById(userId);
+        List<OrderForm> forms = orderDao.getFormByUserId(userInfo.getId());
+        model.addAttribute("orders", forms);
+        List<OrderDetail> details = orderDao.getAllDetails(userInfo.getId());
+        model.addAttribute("details", details);
+        return "../user/userarea.jsp";
+    }
 
 }
