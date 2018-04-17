@@ -10,6 +10,12 @@
 <link
 	href="${pageContext.request.contextPath }/bootstrap-3.3.7-dist/css/bootstrap.min.css"
 	rel="stylesheet" media="screen">
+<script src="${pageContext.request.contextPath }/js/cart.js"
+	type="text/javascript"></script>
+<Link href="${pageContext.request.contextPath }/css/unit.css"
+	rel="stylesheet" type="text/css">
+<Link href="${pageContext.request.contextPath }/css/cart.css"
+	rel="stylesheet" type="text/css">
 
 </head>
 <body>

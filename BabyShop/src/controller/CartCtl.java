@@ -39,9 +39,11 @@ public class CartCtl {
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "seeCart")
     public String seeCart(Model model, HttpSession session, Integer userId) {
-        List<CartInfo> cartInfos = userId != null ? cartDao.getCartsByUserId(userId)
+        List<CartInfo> cartInfos = session.getAttribute("userInfo") != null
+                ? cartDao.getCartsByUserId(((UserInfo) session.getAttribute("userInfo")).getId())
                 : (List<CartInfo>) session.getAttribute("runCarts");
-        getCmtyInfos(cartInfos);
+        if (cartInfos != null)
+            getCmtyInfos(cartInfos);
         model.addAttribute("cartInfo", cartInfos);
         return "../user/cart.jsp";
     }
@@ -78,6 +80,15 @@ public class CartCtl {
         return "redirect:../cmty/cmtyInfo.action?cmtyId=" + cmtyId;
     }
 
+    public static void removeCart(List<CartInfo> list, Integer cmtyId) {
+        for (int i = list.size() - 1; i >= 0; i--) {
+            CartInfo item = list.get(i);
+            if (cmtyId == item.getCommodityId()) {
+                list.remove(item);
+            }
+        }
+    }
+
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "delCart")
     public String delCart(Model model, HttpSession session, Integer cmtyId) {
@@ -86,17 +97,31 @@ public class CartCtl {
             List<CartInfo> carts = (List<CartInfo>) session.getAttribute("runCarts");
             if (carts == null)
                 carts = new ArrayList<CartInfo>();
-            for (CartInfo cart : carts) {
-                if (cart.getCommodityId() == cmtyId) {
-                    carts.remove(cart);
-                }
-            }
+            removeCart(carts, cmtyId);
             // getCmtyInfos(carts);
             session.setAttribute("runCarts", carts);
         } else {
-
+            cartDao.delCart(cartDao.searchCart(userInfo.getId(), cmtyId));
         }
         return seeCart(model, session, userInfo == null ? null : userInfo.getId());
+    }
+
+    public void loginCart(List<CartInfo> carts, Integer userId) {
+        if (carts == null)
+            return;
+        // CartInfo cart = new CartInfo();
+        for (CartInfo c : carts) {
+            c.setUserId(userId);
+            // cart.setCommodityId(c.getCommodityId());
+            // cart.setCount(c.getCount());
+            // cart.setDate(new Date());
+            // cart.setUserId(userId);
+            // System.out.println(cart.toString());
+            // cart.setCmty(
+            // cmtyDao.getById(
+            // c.getCommodityId()));
+            cartDao.addCmty(c);
+        }
     }
 
 }

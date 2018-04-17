@@ -29,7 +29,7 @@ public class CartDao {
     }
 
     // 根据用户id和商品id添加一条购物车记录
-    public boolean addCmty(CartInfo cart) {
+    public void addCmty(CartInfo cart) {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
 
@@ -37,13 +37,12 @@ public class CartDao {
         if(oldInfo == null)
             session.save(cart);
         else {
-            oldInfo.setCount(oldInfo.getCount() + 1);
-            session.save(oldInfo);
+            CartInfo c = (CartInfo) session.get(CartInfo.class, oldInfo.getId());
+            c.setCount(c.getCount() + 1);
         }
 
         tx.commit();
         session.close();
-        return true;
     }
 
     // 根据商品id和用户id返回一条购物车记录
@@ -51,7 +50,7 @@ public class CartDao {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
 
-        Query query = session.createQuery("from CartInfo where userId = ? and cmtyId = ?");
+        Query query = session.createQuery("from CartInfo where userId = ? and commodityId = ?");
         query.setString(0, userId.toString());
         query.setString(1, cmtyId.toString());
         CartInfo cart = (CartInfo) query.uniqueResult();
@@ -59,6 +58,17 @@ public class CartDao {
         tx.commit();
         session.close();
         return cart;
+    }
+    
+    // 删除一条购物车记录
+    public void delCart(CartInfo cart) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+
+        session.delete(cart);
+        
+        tx.commit();
+        session.close();
     }
 
 }

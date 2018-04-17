@@ -45,6 +45,8 @@ public class UserCtl {
         if(userInfo.getPassword().equals(oldUserInfo.getPassword())) {
             session.setAttribute("userInfo", oldUserInfo);
             session.setAttribute("unameNext", "退出登录");
+            
+//            new CartCtl().loginCart(, oldUserInfo.getId());
             return session.getAttribute("lastUrl").toString();
         }
         session.setAttribute("msg", "密码错误");
