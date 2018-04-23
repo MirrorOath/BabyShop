@@ -90,9 +90,13 @@ public class AdminCtl {
     }
 
     @RequestMapping(value = "easyUIUpdateUser")
-    public @ResponseBody UserInfo easyUIUpdateUser(UserInfo userInfo) {
-        System.out.println(userInfo.toString());
-        UserInfo user = userDao.update(userInfo.getId(), userInfo);
+    public @ResponseBody UserInfo easyUIUpdateUser(Integer id, String userName, String password, Integer age) {
+        UserInfo oldInfo = new UserInfo();
+        oldInfo.setId(id);
+        oldInfo.setUserName(userName);
+        oldInfo.setPassword(password);
+        oldInfo.setAge(age);
+        UserInfo user = userDao.update(id, oldInfo);
         return user;
     }
 }

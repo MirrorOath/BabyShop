@@ -59,7 +59,7 @@
 			<div>
 				<div class="demo-info" style="margin-bottom: 10px">
 					<div class="demo-tip icon-tip">&nbsp;</div>
-					<div>Double click the row to begin editing.</div>
+					<div>双击进行修改.</div>
 				</div>
 
 				<table id="dg" title="My Users" style="width: 700px; height: 250px" toolbar="#toolbar" pagination="true" idField="id" rownumbers="true"
