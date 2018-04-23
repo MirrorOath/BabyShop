@@ -64,6 +64,21 @@ public class CommodityDao {
         return cmty;
     }
 
+    // 根据商品名模糊查询所有商品
+    @SuppressWarnings("unchecked")
+    public List<CommodityInfo> CmtyLike(String name) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("from CommodityInfo where name like ?");
+        query.setString(0, "%" + name + "%");
+        List<CommodityInfo> cmties = (List<CommodityInfo>) query.list();
+
+        tx.commit();
+        session.close();
+        return cmties;
+    }
+
     // 根据商品id寻找一个商品
     public CommodityInfo getById(Integer id) {
         Session session = UtilFactory.getSession();
@@ -75,15 +90,15 @@ public class CommodityDao {
         session.close();
         return cmty;
     }
-    
+
     @SuppressWarnings("unchecked")
-    public List<CommodityInfo> getAllCmties(){
+    public List<CommodityInfo> getAllCmties() {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
-        
+
         Query query = session.createQuery("from CommodityInfo");
         List<CommodityInfo> cmties = (List<CommodityInfo>) query.list();
-        
+
         tx.commit();
         session.close();
         return cmties;

@@ -33,9 +33,11 @@ public class AdminCtl {
         cmty.setImageSrc("image/book.jpg");
         CommodityInfo oldInfo = cmtyDao.getByName(cmty.getName());
         if (oldInfo == null) {
+            if(cmty.getName() == null || "".equals(cmty.getName()))
+                return "control.jsp";
             cmtyDao.addCommodity(cmty);
             String str = cmty.getName();
-            for (int i = 1; i < 100; i++) {
+            for (int i = 1; i < 3; i++) {
                 cmty.setName(str + i);
                 cmtyDao.addCommodity(cmty);
             }

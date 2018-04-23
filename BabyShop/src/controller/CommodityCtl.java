@@ -43,19 +43,35 @@ public class CommodityCtl {
         return "../user/search.jsp";
     }
 
-    @RequestMapping(value = "searchByName")
-    public String searchByName(Model model, HttpSession session, String commodityName) {
+    @RequestMapping(value = "changeCategory")
+    private String changeCategory(Model model, HttpSession session, String category) {
+        session.setAttribute("category", category);
+        return "redirect:../user/search.jsp";
+    }
+
+    @RequestMapping(value = "OldsearchByName")
+    public String OldsearchByName(Model model, HttpSession session, String commodityName) {
         session.removeAttribute("lastPage");
         session.removeAttribute("nextPage");
-        if ("".equals(commodityName))
-            return "../user/search.jsp";
+        if ("".equals(commodityName)) {
+            // return "../user/search.jsp";
+        }
         PageBean<CommodityInfo> cmtyPage = new PageBean<CommodityInfo>();
         cmtyPage.setCmtyName(commodityName);
         cmtyPage.setPageCount(12);
 
         cmtyDao.getPageCommoditiesByName(cmtyPage, commodityName);
         session.setAttribute("pageBean", cmtyPage);
+        session.removeAttribute("category");
         return changePage(model, session, 1);
+    }
+
+    @RequestMapping(value = "searchByName")
+    public String searchByName(Model model, HttpSession session, String commodityName) {
+        List<CommodityInfo> cmties = cmtyDao.CmtyLike(commodityName);
+        session.setAttribute("cmties", cmties);
+        session.removeAttribute("category");
+        return "redirect:../user/search.jsp";
     }
 
     @RequestMapping(value = "cmtyInfo")
