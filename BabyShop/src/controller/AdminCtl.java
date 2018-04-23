@@ -34,7 +34,7 @@ public class AdminCtl {
         cmty.setImageSrc("image/book.jpg");
         CommodityInfo oldInfo = cmtyDao.getByName(cmty.getName());
         if (oldInfo == null) {
-            if(cmty.getName() == null || "".equals(cmty.getName()))
+            if (cmty.getName() == null || "".equals(cmty.getName()))
                 return "control.jsp";
             cmtyDao.addCommodity(cmty);
             String str = cmty.getName();
@@ -48,7 +48,6 @@ public class AdminCtl {
             return "control.jsp";
         }
     }
-    
 
     @RequestMapping(value = "queryUsers")
     public String queryUsers(Model model, HttpSession session) {
@@ -56,24 +55,44 @@ public class AdminCtl {
         model.addAttribute("users", users);
         return "../admin/userInfo.jsp";
     }
-    
+
     @RequestMapping(value = "queryCmties")
     public String queryCmties(Model model, HttpSession session) {
         List<CommodityInfo> cmties = cmtyDao.getAllCmties();
         model.addAttribute("cmties", cmties);
         return "../admin/cmties.jsp";
     }
-    
+
     @RequestMapping(value = "delUser")
     public String delUser(Model model, HttpSession session, Integer userId) {
         userDao.delUser(userId);
         return queryUsers(model, session);
     }
-    
+
     @RequestMapping(value = "easyUIGetUsers")
-    public @ResponseBody List<UserInfo> easyUIGetUsers(){
+    public @ResponseBody List<UserInfo> easyUIGetUsers() {
         List<UserInfo> users = userDao.getAllUsers();
+        for (UserInfo user : users)
+            System.out.println(user);
         return users;
     }
 
+    @RequestMapping(value = "easyUISaveUser")
+    public @ResponseBody UserInfo easyUISaveUser(UserInfo userInfo) {
+        UserInfo user = userDao.register(userInfo);
+        return user;
+    }
+
+    @RequestMapping(value = "easyUIDelUser")
+    public @ResponseBody boolean easyUIDelUsers(UserInfo userInfo) {
+        userDao.delUser(userInfo.getId());
+        return true;
+    }
+
+    @RequestMapping(value = "easyUIUpdateUser")
+    public @ResponseBody UserInfo easyUIUpdateUser(UserInfo userInfo) {
+        System.out.println(userInfo.toString());
+        UserInfo user = userDao.update(userInfo.getId(), userInfo);
+        return user;
+    }
 }

@@ -20,7 +20,7 @@ public class UserInfoDao {
     public List<UserInfo> getAllUsers() {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
-        
+
         Query query = session.createQuery("from UserInfo");
         List<UserInfo> users = (List<UserInfo>) query.list();
 
@@ -30,7 +30,7 @@ public class UserInfoDao {
     }
 
     // 注册一个用户
-    public void register(UserInfo userInfo) {
+    public UserInfo register(UserInfo userInfo) {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
 
@@ -39,13 +39,14 @@ public class UserInfoDao {
 
         tx.commit();
         session.close();
+        return userInfo;
     }
 
     // 删除一个用户
     public void delUser(Integer userId) {
         Session session = UtilFactory.getSession();
         Transaction tx = session.beginTransaction();
-        
+
         session.delete(getById(userId));
 
         tx.commit();
@@ -53,8 +54,18 @@ public class UserInfoDao {
     }
 
     // 基于id更新一个用户信息
-    public boolean update(Integer userId, UserInfo userInfo) {
-        return false;
+    public UserInfo update(Integer userId, UserInfo userInfo) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+
+        UserInfo user = (UserInfo) session.get(UserInfo.class, userId);
+        user.setUserName(userInfo.getUserName());
+        user.setPassword(userInfo.getPassword());
+        user.setAge(userInfo.getAge());
+
+        tx.commit();
+        session.close();
+        return user;
     }
 
     // 根据id修改密码

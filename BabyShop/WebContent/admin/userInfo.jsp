@@ -33,9 +33,9 @@
 				$(function () {
 					$('#dg').edatagrid({
 						url: '../admin/easyUIGetUsers.action',
-						saveUrl: 'save_user.php',
-						updateUrl: 'update_user.php',
-						destroyUrl: 'destroy_user.php'
+						saveUrl: '../admin/easyUISaveUser.action',
+						updateUrl: '../admin/easyUIUpdateUser.action',
+						destroyUrl: '../admin/easyUIDelUser.action'
 					});
 				});
 			</script>
@@ -47,38 +47,15 @@
 				<ul>
 					<li class="selected"></li>
 					<li>
-						<a href="${pageContext.request.contextPath }/user/rg_lg_do.action?rorl=index">首页</a>
+						<a href="../user/rg_lg_do.action?rorl=index">首页</a>
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath }/admin/control.jsp">Admin首页</a>
+						<a href="control.jsp">Admin首页</a>
 					</li>
 					<li></li>
 				</ul>
 			</div>
-			<div>
-				<a href="${pageContext.request.contextPath }/admin/queryUsers.action">刷新</a>
-				<table>
-					<tr>
-						<th>用户ID</th>
-						<th>用户名</th>
-						<th>用户密码</th>
-						<th>用户年龄</th>
-						<th>用户注册日期</th>
-					</tr>
-					<c:forEach var="user" items="${users }" varStatus="sta">
-						<tr>
-							<td>${user.id }</td>
-							<td>${user.userName }</td>
-							<td>${user.password }</td>
-							<td>${user.age }</td>
-							<td>${user.date }</td>
-							<td>
-								<a href="${pageContext.request.contextPath }/admin/delUser.action?userId=${user.id }">删除</a>
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
+
 			<div>
 				<div class="demo-info" style="margin-bottom: 10px">
 					<div class="demo-tip icon-tip">&nbsp;</div>
@@ -92,15 +69,15 @@
 							<th field="userName" width="50" editor="{type:'validatebox',options:{required:true}}">用户名</th>
 							<th field="password" width="50" editor="{type:'validatebox',options:{required:true}}">密码</th>
 							<th field="age" width="50" editor="text">年龄</th>
-							<th field="date" width="50" editor="{type:'validatebox',options:{validType:'time'}}">注册日期</th>
+							<th field="date" width="50" editor="{type:'validatebox',options:{validType:'datetime'}}">注册日期</th>
 						</tr>
 					</thead>
 				</table>
 				<div id="toolbar">
-					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">New</a>
-					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Destroy</a>
-					<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Save</a>
-					<a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">Cancel</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">添加</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">删除</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">保存</a>
+					<a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">取消</a>
 				</div>
 			</div>
 		</body>
