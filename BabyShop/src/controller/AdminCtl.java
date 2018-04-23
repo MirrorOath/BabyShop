@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.CartDao;
 import dao.CommodityDao;
@@ -67,6 +68,12 @@ public class AdminCtl {
     public String delUser(Model model, HttpSession session, Integer userId) {
         userDao.delUser(userId);
         return queryUsers(model, session);
+    }
+    
+    @RequestMapping(value = "easyUIGetUsers")
+    public @ResponseBody List<UserInfo> easyUIGetUsers(){
+        List<UserInfo> users = userDao.getAllUsers();
+        return users;
     }
 
 }

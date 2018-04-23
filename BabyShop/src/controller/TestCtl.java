@@ -23,4 +23,10 @@ public class TestCtl {
         fty.close();
         return "redirect:../index.jsp";
     }
+    
+    @RequestMapping(value = "test")
+    public String test(Model model, HttpSession session) {
+        System.out.println("hello world!");
+        return "../user/userInfo.jsp";
+    }
 }
