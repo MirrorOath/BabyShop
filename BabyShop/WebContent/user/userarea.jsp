@@ -11,7 +11,7 @@
 	href="${pageContext.request.contextPath }/bootstrap-3.3.7-dist/css/bootstrap.min.css"
 	rel="stylesheet" media="screen">
 </head>
-<body>
+<body background="../image/back.jpg" style="background-size:20%">
 	<script src="${pageContext.request.contextPath }/easyUI/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
