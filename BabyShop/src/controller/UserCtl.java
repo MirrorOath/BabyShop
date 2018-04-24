@@ -75,6 +75,8 @@ public class UserCtl {
             if ("login".equals(rorl)) {
                 Integer userId = ((UserInfo) session.getAttribute("userInfo")).getId();
                 UserInfo userInfo = userDao.getById(userId);
+                if("admin".equals(userInfo.getUserName()))
+                    return "redirect:../admin/control.jsp";
                 List<OrderForm> forms = orderDao.getFormByUserId(userInfo.getId());
                 model.addAttribute("orders", forms);
                 List<OrderDetail> details = orderDao.getAllDetails(userInfo.getId());

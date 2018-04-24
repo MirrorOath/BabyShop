@@ -69,7 +69,7 @@ form {
 			<div>双击进行修改.</div>
 		</div>
 
-		<table id="dg" title="My Users" style="width: 700px; height: 250px"
+		<table id="dg" title="管理商品" style="width: 700px; height: 250px"
 			toolbar="#toolbar" pagination="true" idField="id" rownumbers="true"
 			fitColumns="true" singleSelect="true">
 			<thead>
