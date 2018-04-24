@@ -62,6 +62,7 @@ public class UserInfoDao {
         user.setUserName(userInfo.getUserName());
         user.setPassword(userInfo.getPassword());
         user.setAge(userInfo.getAge());
+        user.setAddress(userInfo.getAddress());
 
         tx.commit();
         session.close();

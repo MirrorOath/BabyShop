@@ -79,6 +79,8 @@
 					<dd>${userInfo.age }</dd>
 					<dt>注册日期</dt>
 					<dd>${userInfo.date }</dd>
+                    <dt>地址</dt>
+                    <dd>${userInfo.address }</dd>
 				</dl>
 			</div>
 			<div class="col-md-6 column">

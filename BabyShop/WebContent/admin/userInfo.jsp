@@ -82,6 +82,8 @@ form {
 					<th field="password" width="50"
 						editor="{type:'validatebox',options:{required:true}}">密码</th>
 					<th field="age" width="50" editor="text">年龄</th>
+                    <th field="address" width="50"
+                        editor="{type:'validatebox',options:{required:true}}">地址</th>
 					<th field="date" width="50"
 						editor="{type:'validatebox',options:{validType:'datetime'}}">注册日期</th>
 				</tr>

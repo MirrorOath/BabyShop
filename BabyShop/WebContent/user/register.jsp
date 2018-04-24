@@ -93,6 +93,13 @@
 								required="true" />
 						</div>
 					</div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">地址</label>
+                        <div class="col-sm-10">
+                            <input name="address" class="form-control" type="text"
+                                required="true" />
+                        </div>
+                    </div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-default">注册</button>

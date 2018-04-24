@@ -9,6 +9,7 @@
 		<property name="userName" column="userName" type="string" />
 		<property name="password" column="password" type="string" />
 		<property name="age" column="age" />
+        <property name="address" column="address" type="string" />
 		<property name="date" column="date" type="timestamp" />
 	</class>
 	

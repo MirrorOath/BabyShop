@@ -92,11 +92,12 @@ public class AdminCtl {
     }
 
     @RequestMapping(value = "easyUIUpdateUser")
-    public @ResponseBody UserInfo easyUIUpdateUser(Integer id, String userName, String password, Integer age) {
+    public @ResponseBody UserInfo easyUIUpdateUser(Integer id, String userName, String password, String address, Integer age) {
         UserInfo oldInfo = new UserInfo();
         oldInfo.setId(id);
         oldInfo.setUserName(userName);
         oldInfo.setPassword(password);
+        oldInfo.setAddress(address);
         oldInfo.setAge(age);
         UserInfo user = userDao.update(id, oldInfo);
         return user;
