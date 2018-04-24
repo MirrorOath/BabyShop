@@ -21,6 +21,7 @@
 	<script
 		src="${pageContext.request.contextPath }/bootstrap/js/bootstrap.min.js"></script>
 
+    <jsp:include page="util.jsp" />
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
@@ -96,7 +97,6 @@
 										target=_blank> <img alt="Error" src="../${cmty.imageSrc }"></a>
 								</div>
 								<div>
-									<p>${cmty.name }</p>
 									<p>${cmty.name }</p>
 								</div>
 							</div>

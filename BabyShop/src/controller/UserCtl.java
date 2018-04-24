@@ -9,8 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dao.CartDao;
+import dao.CommodityDao;
 import dao.OrderDao;
 import dao.UserInfoDao;
+import dao.tables.CommodityInfo;
 import dao.tables.OrderDetail;
 import dao.tables.OrderForm;
 import dao.tables.UserInfo;
@@ -22,6 +25,10 @@ public class UserCtl {
     private UserInfoDao userDao;
     @Autowired
     private OrderDao orderDao;
+    @Autowired
+    private CommodityDao cmtyDao;
+    @Autowired
+    private CartDao cartDao;
 
     @RequestMapping(value = "register")
     public String register(Model model, HttpSession session, UserInfo userInfo) {
@@ -34,23 +41,26 @@ public class UserCtl {
             return "redirect:../user/register.jsp";
         }
     }
-    
+
     @RequestMapping(value = "login")
     public String login(Model model, HttpSession session, UserInfo userInfo) {
         UserInfo oldUserInfo = userDao.getByName(userInfo.getUserName());
-        if(oldUserInfo == null) {
+        if (oldUserInfo == null) {
             session.setAttribute("msg", "用户不存在");
             return "redirect:../user/login.jsp";
         }
-        if(userInfo.getPassword().equals(oldUserInfo.getPassword())) {
+        if (userInfo.getPassword().equals(oldUserInfo.getPassword())) {
             session.setAttribute("userInfo", oldUserInfo);
             session.setAttribute("unameNext", "退出登录");
-            
-//            new CartCtl().loginCart(, oldUserInfo.getId());
-//            return session.getAttribute("lastUrl").toString();
-            if("admin".equals(oldUserInfo.getUserName()))
+
+            // new CartCtl().loginCart(, oldUserInfo.getId());
+            // return session.getAttribute("lastUrl").toString();
+            if ("admin".equals(oldUserInfo.getUserName()))
                 return "redirect:../admin/control.jsp";
-            return "redirect:../index.jsp";
+            List<CommodityInfo> cmties = cmtyDao.CmtyLike("");
+            session.setAttribute("cmties", cmties);
+            session.removeAttribute("category");
+            return "redirect:../user/search.jsp";
         }
         session.setAttribute("msg", "密码错误");
         return "redirect:../user/login.jsp";

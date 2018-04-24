@@ -104,6 +104,9 @@
 						</tr>
 					</tbody>
 				</table>
+				<p>
+				    ${cmty.note }
+				</p>
 			</div>
 		</div>
 	</div>

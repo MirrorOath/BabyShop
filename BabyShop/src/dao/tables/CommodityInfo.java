@@ -7,6 +7,7 @@ public class CommodityInfo {
     private String name;
     private Integer price;
     private String imageSrc;
+    private String note;
 
     public Integer getId() {
         return id;
@@ -48,10 +49,18 @@ public class CommodityInfo {
         this.imageSrc = imageSrc;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     @Override
     public String toString() {
         return "CommodityInfo [id=" + id + ", category=" + category + ", name=" + name + ", price=" + price
-                + ", imageSrc=" + imageSrc + "]";
+                + ", imageSrc=" + imageSrc + ", note=" + note + "]";
     }
 
 }

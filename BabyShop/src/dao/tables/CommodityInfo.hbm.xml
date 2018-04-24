@@ -10,6 +10,7 @@
 		<property name="name" column="name" type="string" />
         <property name="price" column="price" />
 		<property name="imageSrc" column="imageSrc" type="string" />
+        <property name="note" column="note" type="string" />
 	</class>
 	
 </hibernate-mapping>

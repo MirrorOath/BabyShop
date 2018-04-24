@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import dao.CartDao;
 import dao.CommodityDao;
@@ -79,6 +80,32 @@ public class CommodityCtl {
         CommodityInfo cmty = cmtyDao.getById(cmtyId);
         model.addAttribute("cmty", cmty);
         return "../user/commodityInfo.jsp";
+    }
+
+    @RequestMapping(value = "easyUIGetCmties")
+    public @ResponseBody List<CommodityInfo> easyUIGetCmties(Model model, HttpSession session) {
+        List<CommodityInfo> cmties = cmtyDao.CmtyLike("");
+        return cmties;
+    }
+
+    @RequestMapping(value = "easyUIUpdateCmty")
+    public @ResponseBody CommodityInfo easyUIUpdateCmty(Model model, HttpSession session, Integer id, String name, String category,
+            String imageSrc, String note, Integer price) {
+        CommodityInfo cmty = new CommodityInfo();
+        cmty.setCategory(category);
+        cmty.setId(id);
+        cmty.setImageSrc(imageSrc);
+        cmty.setName(name);
+        cmty.setNote(note);
+        cmty.setPrice(price);
+        cmtyDao.update(id, cmty);
+        return cmty;
+    }
+
+    @RequestMapping(value = "easyUIDelCmty")
+    public @ResponseBody boolean easyUIDelCmty(Model model, HttpSession session, Integer id) {
+        cmtyDao.delById(id);
+        return true;
     }
 
 }

@@ -91,6 +91,18 @@ public class CommodityDao {
         return cmty;
     }
 
+    // 根据id删除一个商品
+    public void delById(Integer id) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+
+        session.delete(getById(id));
+
+        tx.commit();
+        session.close();
+        return;
+    }
+
     @SuppressWarnings("unchecked")
     public List<CommodityInfo> getAllCmties() {
         Session session = UtilFactory.getSession();
@@ -102,6 +114,23 @@ public class CommodityDao {
         tx.commit();
         session.close();
         return cmties;
+    }
+    
+    // 基于id更新一个商品信息
+    public CommodityInfo update(Integer id, CommodityInfo cmty) {
+        Session session = UtilFactory.getSession();
+        Transaction tx = session.beginTransaction();
+        
+        CommodityInfo c = (CommodityInfo) session.get(CommodityInfo.class, id);
+        c.setCategory(cmty.getCategory());
+        c.setName(cmty.getName());
+        c.setImageSrc(cmty.getImageSrc());
+        c.setPrice(cmty.getPrice());
+        c.setNote(cmty.getNote());
+        
+        tx.commit();
+        session.close();
+        return null;
     }
 
 }
