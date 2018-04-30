@@ -18,6 +18,8 @@ import dao.util.UtilFactory;
 @Repository
 public class OrderDao {
     @Autowired
+    private UserInfoDao userDao;
+    @Autowired
     private CartDao cartDao;
     @Autowired
     private CommodityDao cmtyDao;
@@ -79,10 +81,14 @@ public class OrderDao {
 
         OrderForm orderForm = new OrderForm();
         orderForm.setUserId(userId);
-        orderForm.setAddress("Gallifrey星，Kasterborous星群，坐标(10-0-11-0-0，0-2)");
-        orderForm.setExInfo("未付账");
+        orderForm.setAddress(userDao.getById(userId).getAddress());
+        orderForm.setExInfo("已付账");
         orderForm.setDate(new Date());
-        orderForm.setTotalPrice(1991.0919D);
+        Double total = 0.0;
+        for (CartInfo cart : carts) {
+            total += cart.getCount() * cmtyDao.getById(cart.getCommodityId()).getPrice();
+        }
+        orderForm.setTotalPrice(total);
 
         session.save(orderForm);
 

@@ -70,7 +70,7 @@
 	</div>
 
 	<div>
-		<table border=1 style="margin-left: 25%">
+		<table border=1 style="margin-left: 15%">
 			<tr>
 				<th>订单号</th>
 				<th>总价</th>
@@ -87,7 +87,7 @@
 		<table border=1 style="margin-left: 15%">
 			<tr>
 				<th>详单单号</th>
-				<th>图书预览</th>
+				<th>商品预览</th>
 				<th>商品名</th>
 				<th>类别</th>
 				<th>价格</th>
