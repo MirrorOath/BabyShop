@@ -16,7 +16,7 @@
     rel="stylesheet" type="text/css">
 
 </head>
-<body background="../image/back.jpg" style="background-size: 20%">
+<body>
     <script
         src="${pageContext.request.contextPath }/jquery/jquery.min.js"></script>
     <script
