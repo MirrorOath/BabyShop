@@ -30,6 +30,22 @@ public class UserCtl {
     @Autowired
     private CartDao cartDao;
 
+    
+    @RequestMapping(value = "update")
+    public String update(Model model, HttpSession session, UserInfo userInfo) {
+        UserInfo oldUserInfo = userDao.getByName(userInfo.getUserName());
+        if (oldUserInfo == null) {
+            userDao.register(userInfo);
+            return "redirect:../user/userarea.jsp";
+        } else {
+            oldUserInfo.setPassword(userInfo.getPassword());
+            oldUserInfo.setAge(userInfo.getAge());
+            userDao.update(oldUserInfo.getId(), oldUserInfo);
+            session.setAttribute("userInfo", oldUserInfo);
+            return "redirect:../user/userarea.jsp";
+        }
+    }
+    
     @RequestMapping(value = "register")
     public String register(Model model, HttpSession session, UserInfo userInfo) {
         UserInfo oldUserInfo = userDao.getByName(userInfo.getUserName());

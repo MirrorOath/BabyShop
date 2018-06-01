@@ -120,18 +120,18 @@
 					action="${pageContext.request.contextPath}/user/update.action"
 					method="post">
 					<div class="form-group">
-						<label for="exampleInputEmail1">帐号</label><input name="username"
+						<label for="exampleInputEmail1">帐号</label><input name="userName"
 							class="easyui-validatebox form-control" id="exampleInputEmail1"
 							type="text" required="true" validType="userName" />
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">密码</label><input name="pwd"
+						<label for="exampleInputPassword1">密码</label><input name="password"
 							class="form-control" id="exampleInputPassword1" type="password"
 							required="true" />
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">年龄</label><input name="age"
-							class="form-control" id="exampleInputPassword1" type="text"
+							class="form-control" type="text"
 							required="true" />
 					</div>
 					<button type="submit" class="btn btn-default">修改信息</button>
